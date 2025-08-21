@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loops by Lois — Crochet Portfolio</title>
+  <meta name="description" content="A playful, minimal portfolio to showcase crochet projects with stories, process notes, and links to shop or contact." />
+  <meta property="og:title" content="Loops by Lois — Crochet Portfolio" />
+  <meta property="og:description" content="A playful, minimal portfolio to showcase crochet projects with stories, process notes, and links to shop or contact." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🧶</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="container nav" aria-label="Main">
+      <a href="#home" class="brand"><span class="logo">🧶</span><span>Loops by Lois</span></a>
+      <div class="right">
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#journal">Journal</a>
+        <a href="#contact">Contact</a>
+        <a id="shopLink" class="btn" href="#shop">Shop</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="home" class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <span class="chip">Handmade crochet • kid creator</span>
+        <h1>Hello! I’m Lois. I crochet cute things and colourful wearables.</h1>
+        <p>Welcome to my little corner of the web. Here I share my projects, the stories behind them, and the tricks I’m learning as I go.</p>
+        <div class="cta">
+          <a class="btn primary" href="#gallery">See the gallery</a>
+          <a class="btn" href="#journal">Read the journal</a>
+        </div>
+      </div>
+      <div class="card preview" aria-hidden="true">🧵✨</div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" aria-label="Gallery">
+      <div class="section-title">
+        <h2>Gallery</h2>
+        <p>Tap a tile to read the story and details.</p>
+      </div>
+      <div class="filters" role="toolbar" aria-label="Filter projects">
+        <button class="filter" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" data-filter="wearables">Wearables</button>
+        <button class="filter" data-filter="toys">Toys</button>
+        <button class="filter" data-filter="home">Home</button>
+        <button class="filter" data-filter="gifts">Gifts</button>
+      </div>
+      <div id="galleryGrid" class="masonry" aria-live="polite"></div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="section-title">
+        <h2>About</h2>
+        <p>Meet the maker</p>
+      </div>
+      <div class="about">
+        <div class="avatar" aria-hidden="true">😊</div>
+        <div>
+          <p>Hi! I’m Lois, an 11‑year‑old crocheter who loves bright colours, soft yarns, and learning new stitches. I started with granny squares and now I’m trying amigurumi and simple wearables. When I’m not crocheting, I’m reading, drawing, or baking cookies.</p>
+          <p>On this site you’ll find a gallery of my projects, a journal with behind‑the‑scenes notes, and links to patterns or places to buy (maybe in the future!).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Journal / Process notes -->
+    <section id="journal">
+      <div class="section-title">
+        <h2>Journal</h2>
+        <p>Short stories about the makes</p>
+      </div>
+      <div id="journalList" class="journal"></div>
+    </section>
+
+    <!-- Contact / Links -->
+    <section id="contact">
+      <div class="section-title">
+        <h2>Contact & Links</h2>
+        <p>Say hello or follow along</p>
+      </div>
+      <div class="card">
+        <p>Email: <a id="emailLink" href="#">hello@example.com</a><br>
+        Instagram: <a id="instaLink" href="#">@loopsbylois</a><br>
+        Shop: <a id="shopLink2" href="#">(coming soon)</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>© <span id="year"></span> Loops by Lois • Built with ❤ and GitHub Pages</small>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <dialog id="lightbox" aria-label="Project details">
+    <form method="dialog">
+      <button class="close" aria-label="Close">✕</button>
+    </form>
+    <div class="lightbox">
+      <img id="lbImg" alt="" />
+      <div class="info">
+        <h3 id="lbTitle"></h3>
+        <p id="lbDesc" style="margin:6px 0 10px"></p>
+        <p id="lbMeta" style="color:var(--muted); font-size:14px"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <template id="tileTemplate">
+    <article class="tile">
+      <figure>
+        <img loading="lazy" alt="" />
+      </figure>
+      <div class="meta">
+        <div class="title"></div>
+        <div class="tags" aria-hidden="true"></div>
+      </div>
+    </article>
+  </template>
+
+  <template id="entryTemplate">
+    <article class="entry">
+      <h3></h3>
+      <time></time>
+      <p class="content"></p>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
