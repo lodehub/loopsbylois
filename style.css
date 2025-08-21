@@ -82,7 +82,10 @@ dialog::backdrop{background:rgba(0,0,0,.4)}
 /* A11y */
 .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
 
-/* Section colour bands — playful pastel yarn theme */
+/* Section colour bands — edge-to-edge pastel yarn theme */
+#home, #gallery, #about, #journal, #contact {
+  width:100%;
+}
 #home    { background:#ffe4ec; } /* strawberry pink */
 #gallery { background:#e9fbee; } /* mint green */
 #about   { background:#eaf4ff; } /* sky blue */
