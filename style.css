@@ -81,3 +81,17 @@ dialog::backdrop{background:rgba(0,0,0,.4)}
 
 /* A11y */
 .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
+
+/* Section colour bands — playful pastel yarn theme */
+#home    { background:#ffe4ec; } /* strawberry pink */
+#gallery { background:#e9fbee; } /* mint green */
+#about   { background:#eaf4ff; } /* sky blue */
+#journal { background:#fffbe0; } /* sunshine yellow */
+#contact { background:#f3eaff; } /* lavender */
+
+/* Optional: section title colours */
+#home .section-title h2    { color:#d6336c; }
+#gallery .section-title h2 { color:#2f9e44; }
+#about .section-title h2   { color:#1c7ed6; }
+#journal .section-title h2 { color:#f59f00; }
+#contact .section-title h2 { color:#7048e8; }
