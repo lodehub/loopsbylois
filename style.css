@@ -85,6 +85,7 @@ dialog::backdrop{background:rgba(0,0,0,.4)}
 /* Section colour bands — edge-to-edge pastel yarn theme */
 #home, #gallery, #about, #journal, #contact {
   width:100%;
+  transition: background-color 0.6s ease-in-out; /* smooth fade */
 }
 #home    { background:#ffe4ec; } /* strawberry pink */
 #gallery { background:#e9fbee; } /* mint green */
@@ -92,7 +93,7 @@ dialog::backdrop{background:rgba(0,0,0,.4)}
 #journal { background:#fffbe0; } /* sunshine yellow */
 #contact { background:#f3eaff; } /* lavender */
 
-/* Optional: section title colours */
+/* Section title colours */
 #home .section-title h2    { color:#d6336c; }
 #gallery .section-title h2 { color:#2f9e44; }
 #about .section-title h2   { color:#1c7ed6; }
