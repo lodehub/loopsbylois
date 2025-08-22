@@ -1,5 +1,4 @@
-<script>
-// ---- Editable data (start) ----
+// ---- Editable data (start)
 const LINKS = {
   email: "mailto:hello@example.com",
   instagram: "https://instagram.com/loopsbylois",
@@ -39,25 +38,26 @@ const PROJECTS = [
     pattern: "Original",
   },
 ];
-
+// Journal entries — short notes or mini-blogs
 const JOURNAL = [
   { title: "Learning the magic ring", date: "2025-07-05", content: "I finally got the magic ring to work after three tutorials. Tip: use a slightly grippy yarn while practicing." },
   { title: "Choosing colours", date: "2025-08-10", content: "I put yarn balls next to each other in daylight, not room light. It helps avoid muddy combinations." }
 ];
-// ---- Editable data (end) ----
+// ---- Editable data (end)
 
 // Wire up links & year
-const emailLink = document.getElementById('emailLink');
-const instaLink = document.getElementById('instaLink');
-const shopLink = document.getElementById('shopLink');
-const shopLink2 = document.getElementById('shopLink2');
-const year = document.getElementById('year');
-
-if (emailLink) emailLink.href = LINKS.email;
-if (instaLink) instaLink.href = LINKS.instagram;
-if (shopLink) shopLink.href = LINKS.shop;
-if (shopLink2) shopLink2.href = LINKS.shop;
-if (year) year.textContent = new Date().getFullYear();
+(function wireLinks(){
+  const emailLink = document.getElementById('emailLink');
+  const instaLink = document.getElementById('instaLink');
+  const shopLink = document.getElementById('shopLink');
+  const shopLink2 = document.getElementById('shopLink2');
+  const year = document.getElementById('year');
+  if (emailLink) emailLink.href = LINKS.email;
+  if (instaLink) instaLink.href = LINKS.instagram;
+  if (shopLink) shopLink.href = LINKS.shop;
+  if (shopLink2) shopLink2.href = LINKS.shop;
+  if (year) year.textContent = new Date().getFullYear();
+})();
 
 // Helpers
 function placeholderSVG(text){
@@ -98,12 +98,11 @@ function openLightbox(p){
   if (closeBtn) closeBtn.addEventListener('click', ()=> document.getElementById('lightbox').close());
 })();
 
-function renderProjects(list){
-  const grid = document.getElementById('galleryGrid');
+function renderTiles(gridId, list){
+  const grid = document.getElementById(gridId);
   if (!grid) return;
   grid.innerHTML = '';
   const tpl = document.getElementById('tileTemplate');
-
   list.forEach(p=>{
     const node = tpl.content.cloneNode(true);
     const img = node.querySelector('img');
@@ -123,19 +122,25 @@ function renderProjects(list){
   });
 }
 
-function setFilter(key){
-  const buttons = Array.from(document.querySelectorAll('.filter'));
-  buttons.forEach(b=> b.setAttribute('aria-pressed', String(b.dataset.filter===key)));
-  if (key==='all') return renderProjects(PROJECTS);
-  renderProjects(PROJECTS.filter(p=> (p.tags||[]).includes(key)));
+function renderProjects(list){
+  renderTiles('galleryGrid', list);
 }
 
+// Filters
 (function initFilters(){
   const buttons = Array.from(document.querySelectorAll('.filter'));
+  function setFilter(key){
+    buttons.forEach(b=> b.setAttribute('aria-pressed', String(b.dataset.filter===key)));
+    if (key==='all') return renderProjects(PROJECTS);
+    renderProjects(PROJECTS.filter(p=> (p.tags||[]).includes(key)));
+  }
   buttons.forEach(b=> b.addEventListener('click', ()=> setFilter(b.dataset.filter)));
+  // initial render of full gallery
+  renderProjects(PROJECTS);
 })();
 
-function renderJournal(){
+// Journal
+(function renderJournal(){
   const list = document.getElementById('journalList');
   if (!list) return;
   list.innerHTML = '';
@@ -147,9 +152,11 @@ function renderJournal(){
     node.querySelector('.content').textContent = e.content;
     list.appendChild(node);
   });
-}
+})();
 
-// Init
-renderProjects(PROJECTS);
-renderJournal();
-</script>
+// Latest (homepage)
+(function renderLatest(){
+  const parsed = PROJECTS.map(p=>({ ...p, _t: p.date ? Date.parse(p.date) : 0 }));
+  parsed.sort((a,b)=> b._t - a._t);
+  renderTiles('latestGrid', parsed.slice(0,4));
+})();
