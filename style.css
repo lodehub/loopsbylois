@@ -1,75 +1,74 @@
 /* --- Theme tokens --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 :root{
-  --bg:#ffffff; --fg:#111; --muted:#666; --brand:#1f6feb; --accent:#d97706; --ring:#1f6feb33;
-  --card:#f7f7f8; --border:#e6e6e6;
+  --bg:#ffffff; --fg:#0e0e10; --muted:#6b7280; --brand:#ff6b6b; --brand-ink:#d94b4b; --ring:#ff6b6b33;
+  --card:#fafafa; --border:#ececec;
 }
 @media (prefers-color-scheme: dark){
-  :root{ --bg:#0b0b0c; --fg:#fafafa; --muted:#bdbdbd; --brand:#7aa2ff; --accent:#f2a64b; --ring:#7aa2ff33; --card:#121214; --border:#1f1f22; }
+  :root{ --bg:#0b0b0c; --fg:#f7f7f7; --muted:#b3b9c6; --brand:#ff8a7a; --brand-ink:#ff6b6b; --ring:#ff8a7a33; --card:#131316; --border:#212127; }
 }
 *{box-sizing:border-box}
-html,body{margin:0; padding:0; background:var(--bg); color:var(--fg); font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif}
+html,body{margin:0; padding:0; background:var(--bg); color:var(--fg); font:16px/1.6 Poppins, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif}
 a{color:inherit; text-decoration:none}
-.container{max-width:1100px; margin:0 auto; padding:0 16px}
+.container{max-width:980px; margin:0 auto; padding:0 20px}
 
-/* Header */
-header{position:sticky; top:0; z-index:10; backdrop-filter:saturate(1.2) blur(6px); background:color-mix(in oklab, var(--bg) 80%, transparent); border-bottom:1px solid var(--border)}
-.nav{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
-.brand{display:flex; align-items:center; gap:10px; font-weight:700}
+/* Header — cleaner, centered links, no shadows */
+header{position:sticky; top:0; z-index:10; backdrop-filter:saturate(1.1) blur(6px); background:color-mix(in oklab, var(--bg) 86%, transparent); border-bottom:1px solid var(--border)}
+.nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+.brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
 .brand .logo{width:28px; height:28px; display:grid; place-items:center; border-radius:8px; background:var(--card)}
-.nav a{padding:8px 10px; border-radius:12px}
-.nav a:hover,.nav a:focus{background:var(--card); outline:2px solid transparent}
-.nav .right{display:flex; align-items:center; gap:2px; flex-wrap:wrap}
-
-/* Hero */
-.hero{display:grid; grid-template-columns:1.2fr 1fr; gap:24px; padding:28px 0 10px}
-.hero h1{font-size:clamp(28px,4vw,46px); line-height:1.1; margin:8px 0}
-.hero p{color:var(--muted); margin:0 0 14px}
-.chip{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border); background:var(--card); padding:8px 12px; border-radius:999px; font-size:14px}
-.cta{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
-.btn{border:1px solid var(--border); background:var(--bg); padding:10px 14px; border-radius:14px; font-weight:600}
+.nav a{padding:8px 10px; border-radius:10px}
+.nav a:hover,.nav a:focus{ text-decoration:underline; text-underline-offset:4px }
+.nav .right{display:flex; align-items:center; gap:6px; flex-wrap:wrap}
+.btn{border:1px solid var(--border); background:var(--bg); padding:10px 14px; border-radius:999px; font-weight:600}
 .btn.primary{background:var(--brand); color:#fff; border-color:transparent}
 .btn:hover{transform:translateY(-1px)}
 
-.card{background:var(--card); border:1px solid var(--border); border-radius:18px; padding:14px}
-.hero .preview{aspect-ratio:4/3; border-radius:18px; overflow:hidden; display:grid; place-items:center; font-size:40px}
+/* Hero — bigger, simpler */
+.hero{display:grid; grid-template-columns:1.2fr 1fr; gap:28px; padding:42px 0 20px}
+.hero h1{font-size:clamp(32px,4.6vw,58px); line-height:1.08; margin:8px 0}
+.hero p{color:var(--muted); margin:0 0 18px; font-size:18px}
+.chip{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border); background:var(--card); padding:8px 12px; border-radius:999px; font-size:14px}
+.card{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:14px}
+.hero .preview{aspect-ratio:4/3; border-radius:16px; overflow:hidden; display:grid; place-items:center; font-size:46px}
 
 /* Sections */
-section{padding:30px 0}
-.section-title{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:14px}
-.section-title h2{margin:0; font-size:clamp(22px,3.2vw,30px)}
+section{padding:48px 0}
+.section-title{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:18px}
+.section-title h2{margin:0; font-size:clamp(22px,3.2vw,32px)}
 .section-title p{margin:0; color:var(--muted)}
 
-/* Filters */
-.filters{display:flex; gap:8px; flex-wrap:wrap; margin:6px 0 14px}
+/* Filters — toned down; hide border feel */
+.filters{display:flex; gap:8px; flex-wrap:wrap; margin:6px 0 18px}
 .filter{border:1px solid var(--border); background:var(--bg); padding:6px 10px; border-radius:999px; font-size:14px; cursor:pointer}
 .filter[aria-pressed="true"]{background:var(--brand); border-color:transparent; color:#fff}
 
-/* Masonry gallery */
-.masonry{column-count:1; column-gap:14px}
-@media (min-width:640px){.masonry{column-count:2}}
-@media (min-width:960px){.masonry{column-count:3}}
-.tile{break-inside:avoid; margin:0 0 14px}
-.tile figure{margin:0; display:block; overflow:hidden; border-radius:16px; border:1px solid var(--border); background:var(--bg)}
-.tile img{display:block; width:100%; height:auto; transition:transform .35s ease; aspect-ratio:4/3; background:var(--card)}
-.tile:hover img{transform:scale(1.02)}
-.meta{padding:10px 12px}
-.meta .title{font-weight:700}
-.meta .tags{display:flex; gap:6px; flex-wrap:wrap; margin-top:6px}
+/* Gallery — neat grid, square tiles like the reference */
+#galleryGrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px }
+@media (min-width:720px){ #galleryGrid{ grid-template-columns:repeat(3,1fr) } }
+@media (min-width:1040px){ #galleryGrid{ grid-template-columns:repeat(4,1fr) } }
+.tile{margin:0}
+.tile figure{margin:0; overflow:hidden; border-radius:14px; background:var(--card)}
+.tile img{display:block; width:100%; height:100%; object-fit:cover; aspect-ratio:1/1; transition:transform .35s ease}
+.tile:hover img{transform:scale(1.03)}
+.meta{padding:8px 2px}
+.meta .title{font-weight:600}
+.meta .tags{display:none} /* keep super clean; toggle back if needed */
 .tag{font-size:12px; border:1px solid var(--border); padding:4px 8px; border-radius:999px; color:var(--muted)}
 
 /* About */
-.about{display:grid; grid-template-columns:120px 1fr; gap:16px}
-.avatar{width:120px; height:120px; border-radius:50%; border:1px solid var(--border); background:var(--card); display:grid; place-items:center; font-size:40px}
+.about{display:grid; grid-template-columns:120px 1fr; gap:18px}
+.avatar{width:120px; height:120px; border-radius:16px; border:1px solid var(--border); background:var(--card); display:grid; place-items:center; font-size:40px}
 
-/* Journal */
-.journal{display:grid; grid-template-columns:1fr; gap:12px}
-@media (min-width:720px){.journal{grid-template-columns:1fr 1fr}}
-.entry{border:1px solid var(--border); border-radius:16px; padding:14px; background:var(--bg)}
-.entry h3{margin:0 0 8px}
+/* Journal — simple list, no heavy boxes */
+.journal{display:grid; grid-template-columns:1fr; gap:16px}
+@media (min-width:800px){.journal{grid-template-columns:1fr 1fr}}
+.entry{border:1px solid var(--border); border-radius:14px; padding:14px; background:var(--bg)}
+.entry h3{margin:0 0 8px; font-weight:600}
 .entry time{color:var(--muted); font-size:14px}
 
 /* Footer */
-footer{border-top:1px solid var(--border); padding:22px 0 40px; color:var(--muted)}
+footer{border-top:1px solid var(--border); padding:26px 0 44px; color:var(--muted)}
 
 /* Modal */
 dialog{border:none; padding:0; border-radius:18px; max-width:min(900px,92vw); background:var(--bg)}
@@ -82,20 +81,15 @@ dialog::backdrop{background:rgba(0,0,0,.4)}
 /* A11y */
 .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
 
-/* Section colour bands — edge-to-edge pastel yarn theme */
-#home, #gallery, #about, #journal, #contact {
-  width:100%;
-  transition: background-color 0.6s ease-in-out; /* smooth fade */
-}
-#home    { background:#ffe4ec; } /* strawberry pink */
-#gallery { background:#e9fbee; } /* mint green */
-#about   { background:#eaf4ff; } /* sky blue */
-#journal { background:#fffbe0; } /* sunshine yellow */
-#contact { background:#f3eaff; } /* lavender */
+/* Section colour bands — softened + smooth fade */
+#home, #gallery, #about, #journal, #contact { width:100%; transition: background-color .6s ease-in-out }
+#home{ background:var(--bg) }
+#gallery{ background: #fff7f7 } /* subtle brand-tinted band */
+#about, #journal, #contact{ background:var(--bg) }
 
-/* Section title colours */
-#home .section-title h2    { color:#d6336c; }
-#gallery .section-title h2 { color:#2f9e44; }
-#about .section-title h2   { color:#1c7ed6; }
-#journal .section-title h2 { color:#f59f00; }
-#contact .section-title h2 { color:#7048e8; }
+/* Section title accent underline */
+.section-title h2{ position:relative }
+.section-title h2::after{ content:""; position:absolute; left:0; bottom:-6px; width:46px; height:3px; background:var(--brand); border-radius:2px }
+
+/* Link styles */
+a:hover{ text-decoration:underline; text-underline-offset:3px }
