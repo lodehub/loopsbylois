@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'cardagan'
+title: 'cardigan'
 ---
 This is a story of how I made my first cardigan.
 
