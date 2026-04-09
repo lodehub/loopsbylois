@@ -1,12 +1,56 @@
-# Build settings
+title: Loops by Lois
+description: A creative portfolio — crochet, Procreate, sketches, and writing.
+url: "https://loopsbylois.com"
+baseurl: ""
 
-port: 4000
-markdown:  kramdown
-permalink: /:title
-plugins:   [jekyll-sitemap, jekyll-feed,  jekyll-seo-tag]
+author:
+  name: Lois
+  email: hello@loopsbylois.com
 
-# Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
+# Collections
+collections:
+  crochet:
+    output: true
+    permalink: /crochet/:name/
+  procreate:
+    output: true
+    permalink: /procreate/:name/
+  sketches:
+    output: true
+    permalink: /sketches/:name/
+  writing:
+    output: true
+    permalink: /writing/:name/
 
-title:		   "Loops by Lois"
-description: " A cheerful journal of crochet creations by Lois — sharing patterns, ideas, and the joy of making something by hand."
-author:      "Paul Le"
+defaults:
+  - scope:
+      path: ""
+      type: crochet
+    values:
+      layout: piece
+      category: crochet
+  - scope:
+      path: ""
+      type: procreate
+    values:
+      layout: piece
+      category: procreate
+  - scope:
+      path: ""
+      type: sketches
+    values:
+      layout: piece
+      category: sketches
+  - scope:
+      path: ""
+      type: writing
+    values:
+      layout: piece
+      category: writing
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+markdown: kramdown
+highlighter: rouge

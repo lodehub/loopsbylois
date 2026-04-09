@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<div class="piece-header">
+  <div class="piece-eyebrow">
+    <a class="piece-cat-link" href="{{ '/' | relative_url }}projects/#{{ page.category }}">← {{ page.category | capitalize }}</a>
+    {% if page.type %}<span class="piece-type">{{ page.type }}</span>{% endif %}
+  </div>
+  <h1 class="piece-title">{{ page.title }}</h1>
+  <p class="piece-date">{{ page.date | date: "%B %-d, %Y" }}</p>
+</div>
+
+{% if page.image %}
+<img class="piece-image" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+{% endif %}
+
+<div class="piece-body">
+  {{ content }}
+</div>
+
+<div class="piece-nav">
+  {% if page.previous %}
+    <a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>
+  {% else %}
+    <span></span>
+  {% endif %}
+  {% if page.next %}
+    <a href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>
+  {% endif %}
+</div>
